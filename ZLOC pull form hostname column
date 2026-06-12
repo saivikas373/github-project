@@ -1,0 +1,27 @@
+ZLOC pull form hostname column
+y will be given later
+
+SWITCH NAME ILO
+ILO ports
+interface ethernet 1/x-x
+  switchport
+  switchport access vlan 3089
+  mtu 9178
+  no shutdown
+  exit
+
+  interface Ethernet1/x
+ description [TYPE=DC_CUST][BW=1G][NAME=VO][ZLOC=HOST NAME coloumn][ZPORT=ILOM][IP=y]
+
+
+ SWITCH NAME MGMT
+ MGMT ports
+interface ethernet 1/x-x
+  switchport
+  switchport access vlan 3088
+  mtu 9178
+  no shutdown
+  exit
+
+  interface Ethernet1/x
+ description [TYPE=DC_CUST][BW=1G][NAME=VO][ZLOC=HOST NAME coloumn][ZPORT=MGMT][IP=y]
