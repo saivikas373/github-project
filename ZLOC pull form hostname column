@@ -1,5 +1,6 @@
 ZLOC pull form hostname column
-y will be given later
+ILO IP = 10.8.8.141-159
+DVSBWCHRCNCTR
 
 SWITCH NAME ILO
 ILO ports
@@ -14,7 +15,12 @@ interface ethernet 1/x-x
  description [TYPE=DC_CUST][BW=1G][NAME=VO][ZLOC=HOST NAME coloumn][ZPORT=ILOM][IP=y]
 
 
+
  SWITCH NAME MGMT
+ DVSBXCHRCNCTR
+
+ip =10.6.5.153-171
+
  MGMT ports
 interface ethernet 1/x-x
   switchport
@@ -25,3 +31,21 @@ interface ethernet 1/x-x
 
   interface Ethernet1/x
  description [TYPE=DC_CUST][BW=1G][NAME=VO][ZLOC=HOST NAME coloumn][ZPORT=MGMT][IP=y]
+
+DVREHCHRCNCTR
+ip = 10.8.4.148, 10.8.4.150, 10.8.4.152...10.8.4.184
+interface Ethernet1/x-x
+  mtu 9000
+  ip access-group PROTECT_VIDEO_OUT_IPV4_FILTER out
+  ipv6 traffic-filter PROTECT_VIDEO_OUT_IPV6_FILTER out
+  service-policy type qos input VIDEO_STREAM_IN_MAP
+  no ip redirects
+  ip pim sparse-mode
+  ip igmp version 3
+  no shutdown
+  exit
+
+  interface Ethernet1/x-x
+  description [TYPE=DC_CUST][BW=1G][NAME=VO][ZLOC=HOST NAME coloumn][ZPRT=DATA][ZSHID=][IP=][ROLE=ENCODER]
+  ip address xxx
+  ipv6 address xxx
